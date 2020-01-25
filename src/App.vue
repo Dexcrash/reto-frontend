@@ -7,7 +7,7 @@
           class="grey darken-4"
           dark
           permanent
-          style="width:18%"
+          style="width:15%"
         >
           <v-row justify="center">
             <router-link to="/">
