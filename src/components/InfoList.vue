@@ -1,5 +1,6 @@
 <template>
   <v-row>
+    <!-- General info of a List -->
     <v-col xs="12" md="4">
       <v-img
         class="white--text align-end"

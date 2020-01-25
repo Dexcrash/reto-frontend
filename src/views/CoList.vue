@@ -1,6 +1,8 @@
 <template>
   <v-container>
+    <!-- Component with general info of list -->
     <InfoList v-bind:name="title" v-bind:description="description" />
+    <!-- Component with list of songs of the music list without edit feature-->
     <SongsList />
   </v-container>
 </template>

@@ -2,6 +2,7 @@
   <v-container>
     <v-row>
       <v-col>
+        <!-- Basic page of welcome to the app -->
         <h1>Bienvenido a Music Lists</h1>
         <v-row justify="center">
           <v-avatar class="my-5" size="500" tile>

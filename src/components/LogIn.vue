@@ -1,12 +1,14 @@
 <template>
   <v-container fill-height>
     <v-row justify="center">
+      <!-- Card with form of LogIn -->
       <v-col cols="4">
         <v-card>
           <v-card-title>
             <span class="headline">Igresa con tu usuario</span>
           </v-card-title>
           <v-card-text>
+            <!-- Form of Login -->
             <v-form ref="form" v-model="valid">
               <v-text-field
                 v-model="user"
@@ -64,6 +66,7 @@ export default {
     };
   },
   methods: {
+    //validate logIn form
     async validate() {
       if (this.$refs.form.validate()) {
         let response = await axios.post(

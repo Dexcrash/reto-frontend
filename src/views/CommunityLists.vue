@@ -1,14 +1,15 @@
 <template>
-  <v-container>
+  <v-container class="ml-5">
     <h1>Descubre Listas Unicas</h1>
     <v-row>
+      <!-- Lis of Muisic List of all DataBase -->
       <v-col xs="12" md="4" v-for="(item, index) in items" :key="index">
         <router-link class="card" :to="`/list/${item.id}`">
           <v-card dark>
             <v-img
               class="white--text align-end"
               height="200px"
-              src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+              src="https://images.pexels.com/photos/167491/pexels-photo-167491.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
             >
               <v-card-title>{{ item.name }}</v-card-title>
             </v-img>
@@ -37,6 +38,7 @@ export default {
     };
   },
   methods: {
+    //get all music lists from database
     async getLists() {
       let lists = await axios.get("https://reto-back.herokuapp.com/lists");
       // eslint-disable-next-line no-console

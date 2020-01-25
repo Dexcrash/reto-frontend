@@ -1,12 +1,14 @@
 <template>
-  <v-container>
+  <v-container class="ml-5">
+    <!-- Component for LogIn -->
     <div v-if="!logged">
       <LogIn :userLogged="userLogged" />
     </div>
-
+    <!-- Component if user is logged -->
     <div v-else>
       <h1>Mis Listas</h1>
       <v-row>
+        <!-- Dialog to add list -->
         <v-col cols="12">
           <v-dialog v-model="dialog" persistent max-width="600px">
             <template v-slot:activator="{ on }">
@@ -17,6 +19,7 @@
                 <span class="headline">Agregar Lista</span>
               </v-card-title>
               <v-card-text>
+                <!-- Form to add list -->
                 <v-form ref="form" v-model="valid">
                   <v-text-field
                     v-model="title"
@@ -56,13 +59,14 @@
         </v-col>
       </v-row>
       <v-row>
+        <!-- List of Music Lists -->
         <v-col xs="12" md="4" v-for="(item, index) in items" :key="index">
           <router-link class="card" :to="`/list/${item.id}`">
             <v-card dark>
               <v-img
                 class="white--text align-end"
                 height="200px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                src="https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?cs=srgb&dl=people-at-concert-1105666.jpg&fm=jpg"
               >
                 <v-card-title>{{ item.name }}</v-card-title>
               </v-img>
@@ -88,6 +92,7 @@ export default {
   components: {
     LogIn
   },
+  //rules and data
   data() {
     return {
       items: [],
@@ -107,6 +112,7 @@ export default {
     };
   },
   methods: {
+    //get music lists
     async getLists() {
       let lists = await axios.get(
         "http://localhost:3000/listsByUser/" + this.userId
@@ -114,11 +120,13 @@ export default {
       // eslint-disable-next-line no-console
       this.items = lists.data;
     },
+    //change to user loggged
     userLogged(id) {
       this.userId = id;
       this.logged = true;
       this.getLists();
     },
+    //valideate new list form
     async validate() {
       if (this.$refs.form.validate()) {
         await axios
@@ -135,6 +143,7 @@ export default {
         this.dialog = false;
       }
     },
+    //reset new list form
     reset() {
       this.$refs.form.reset();
       this.dialog = false;

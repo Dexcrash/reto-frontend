@@ -1,6 +1,7 @@
 <template>
   <v-app style="background-color:#D1D1D1">
     <template>
+      <!-- container with side-bar -->
       <v-container>
         <v-navigation-drawer
           app
@@ -9,6 +10,7 @@
           permanent
           style="width:15%"
         >
+        <!-- Logo of the app -->
           <v-row justify="center">
             <router-link to="/">
               <v-avatar class="my-5" size="200" tile>
@@ -16,6 +18,7 @@
               </v-avatar>
             </router-link>
           </v-row>
+          <!-- Items of sidebar -->
           <v-list>
             <router-link
               v-for="item in items"
@@ -35,16 +38,11 @@
               </v-list-item>
             </router-link>
           </v-list>
-
-          <template v-slot:append>
-            <div class="pa-2">
-              <v-btn block>Logout</v-btn>
-            </div>
-          </template>
         </v-navigation-drawer>
       </v-container>
     </template>
 
+    <!-- router view-->
     <v-content class="ml-5">
       <router-view></router-view>
     </v-content>

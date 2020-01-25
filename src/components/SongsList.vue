@@ -1,6 +1,7 @@
 <template>
   <v-row>
     <v-col v-if="edit" cols="12">
+      <!-- Dialog to add a song -->
       <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on }">
           <v-btn color="primary" dark v-on="on">Add Song</v-btn>
@@ -62,6 +63,7 @@
           </v-card-text>
         </v-card>
       </v-dialog>
+      <!-- Button to delete selected song -->
       <v-btn
         :disabled="selectedSong === null"
         color="success"
@@ -70,9 +72,11 @@
         Borrar
       </v-btn>
     </v-col>
+    <!-- Table with all songs from the list -->
     <v-col cols="12">
       <v-simple-table dark>
         <template v-slot:default>
+          <!-- Table Headers -->
           <thead>
             <tr>
               <th class="text-left"></th>
@@ -82,6 +86,7 @@
               <th class="text-left"></th>
             </tr>
           </thead>
+          <!-- Table Content -->
           <tbody>
             <tr
               v-for="(song, index) in songs"
@@ -117,6 +122,7 @@ import axios from "axios";
 
 export default {
   props: ["edit"],
+  //rules and data
   data() {
     return {
       songs: [],
@@ -145,6 +151,7 @@ export default {
     };
   },
   methods: {
+    //validate new song form
     async validate() {
       if (this.$refs.form.validate()) {
         await axios
@@ -169,16 +176,19 @@ export default {
         this.dialog = false;
       }
     },
+    //reset new song form
     reset() {
       this.$refs.form.reset();
       this.dialog = false;
     },
+    //delete the selected song
     async deleteSong() {
       await axios.delete(
         "https://reto-back.herokuapp.com/songs/" + this.selectedSong.id
       );
       this.getSongs();
     },
+    //select a song and save as data
     selectSong(song) {
       if (this.edit) {
         if (this.selectedSong == song) {
@@ -188,6 +198,7 @@ export default {
         }
       }
     },
+    //get all song of the list
     async getSongs() {
       let songs = await axios.get(
         "https://reto-back.herokuapp.com/lists/" +

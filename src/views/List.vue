@@ -1,6 +1,8 @@
 <template>
   <v-container>
+    <!-- Component with general info of list -->
     <InfoList v-bind:name="title" v-bind:description="description" />
+    <!-- Component with list of songs of the music list -->
     <SongsList edit />
   </v-container>
 </template>
@@ -25,6 +27,7 @@ export default {
     };
   },
   methods: {
+    //get general info of the list
     async getList() {
       let list = await axios.get(
         "https://reto-back.herokuapp.com/lists/" + this.$route.params.id
