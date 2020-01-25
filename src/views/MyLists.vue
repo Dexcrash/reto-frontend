@@ -115,7 +115,7 @@ export default {
     //get music lists
     async getLists() {
       let lists = await axios.get(
-        "https://reto-back.herokuapp.com/" + this.userId
+        "https://reto-back.herokuapp.com/listsByUser/" + this.userId
       );
       // eslint-disable-next-line no-console
       this.items = lists.data;
