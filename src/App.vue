@@ -45,7 +45,7 @@
       </v-container>
     </template>
 
-    <v-content>
+    <v-content class="ml-5">
       <router-view></router-view>
     </v-content>
   </v-app>
