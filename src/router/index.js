@@ -25,6 +25,11 @@ const routes = [
     component: () => import("../views/List.vue")
   },
   {
+    path: "/colist/:id",
+    name: "list",
+    component: () => import("../views/CoList.vue")
+  },
+  {
     path: "/colists",
     name: "colists",
     component: () => import("../views/CommunityLists.vue")

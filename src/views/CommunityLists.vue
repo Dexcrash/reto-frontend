@@ -4,7 +4,7 @@
     <v-row>
       <!-- Lis of Muisic List of all DataBase -->
       <v-col xs="12" md="4" v-for="(item, index) in items" :key="index">
-        <router-link class="card" :to="`/list/${item.id}`">
+        <router-link class="card" :to="`/colist/${item.id}`">
           <v-card dark>
             <v-img
               class="white--text align-end"
@@ -41,8 +41,6 @@ export default {
     //get all music lists from database
     async getLists() {
       let lists = await axios.get("https://reto-back.herokuapp.com/lists");
-      // eslint-disable-next-line no-console
-      console.log(lists.data);
       this.items = lists.data;
     }
   },
