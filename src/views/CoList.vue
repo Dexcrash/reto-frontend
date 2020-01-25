@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <InfoList v-bind:name="title" v-bind:description="description" />
-    <SongsList v-bind:name="edit" />
+    <SongsList />
   </v-container>
 </template>
 
@@ -17,7 +17,6 @@ export default {
     SongsList
   },
   name: "list",
-  props:["edit"],
   data() {
     return {
       title: "",
