@@ -3,7 +3,7 @@
     <!-- Component with general info of list -->
     <InfoList v-bind:name="title" v-bind:description="description" />
     <!-- Component with list of songs of the music list -->
-    <SongsList edit />
+    <SongsList edit="true" />
   </v-container>
 </template>
 
