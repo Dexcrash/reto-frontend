@@ -1,5 +1,10 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <v-container fill-height>
+    <v-row>
+      <v-col align="center" >
+        <h1>Este es el desarrollo del reto tecnico para Inalambria</h1>
+        <h3>Camilo Sánchez Salamanca</h3>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>

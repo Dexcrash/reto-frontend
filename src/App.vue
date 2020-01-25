@@ -1,37 +1,49 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+  <v-app style="background-color:#D1D1D1">
+    <template>
+      <v-container>
+        <v-navigation-drawer
+          app
+          class="grey darken-4"
+          dark
+          permanent
+          style="width:18%"
+        >
+          <v-row justify="center">
+            <router-link to="/">
+              <v-avatar class="my-5" size="200" tile>
+                <v-img src="./assets/logoBonito.png"></v-img>
+              </v-avatar>
+            </router-link>
+          </v-row>
+          <v-list>
+            <router-link
+              v-for="item in items"
+              :key="item.title"
+              :to="`${item.path}`"
+            >
+              <v-list-item link>
+                <v-list-item-icon>
+                  <v-icon>{{ item.icon }}</v-icon>
+                </v-list-item-icon>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    {{ item.title }}
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </router-link>
+          </v-list>
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>fas fa-external-link-alt</v-icon>
-      </v-btn>
-    </v-app-bar>
+          <template v-slot:append>
+            <div class="pa-2">
+              <v-btn block>Logout</v-btn>
+            </div>
+          </template>
+        </v-navigation-drawer>
+      </v-container>
+    </template>
 
     <v-content>
       <router-view></router-view>
@@ -42,9 +54,14 @@
 <script>
 export default {
   name: "App",
-
-  data: () => ({
-    //
-  })
+  data() {
+    return {
+      items: [
+        { title: "Tus Listas", icon: "mdi-view-dashboard", path: "/lists" },
+        { title: "Descubre", icon: "mdi-image", path: "/colists" },
+        { title: "About", icon: "mdi-help-box", path: "/about" }
+      ]
+    };
+  }
 };
 </script>
