@@ -66,10 +66,13 @@ export default {
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
-        let response = await axios.post("http://localhost:3000/usersByPass/", {
-          name: this.user,
-          password: this.pass
-        });
+        let response = await axios.post(
+          "https://reto-back.herokuapp.com/usersByPass/",
+          {
+            name: this.user,
+            password: this.pass
+          }
+        );
         if (response.data.id) {
           this.userLogged(response.data.id);
         } else {

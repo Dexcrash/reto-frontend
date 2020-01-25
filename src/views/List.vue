@@ -27,7 +27,7 @@ export default {
   methods: {
     async getList() {
       let list = await axios.get(
-        "http://localhost:3000/lists/" + this.$route.params.id
+        "https://reto-back.herokuapp.com/lists/" + this.$route.params.id
       );
       this.title = list.data.name;
       this.description = list.data.description;

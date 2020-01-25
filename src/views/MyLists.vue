@@ -122,7 +122,7 @@ export default {
     async validate() {
       if (this.$refs.form.validate()) {
         await axios
-          .post("http://localhost:3000/lists/", {
+          .post("https://reto-back.herokuapp.com/lists/", {
             name: this.title,
             description: this.description,
             user_id: this.userId

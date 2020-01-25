@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     async getLists() {
-      let lists = await axios.get("http://localhost:3000/lists");
+      let lists = await axios.get("https://reto-back.herokuapp.com/lists");
       // eslint-disable-next-line no-console
       console.log(lists.data);
       this.items = lists.data;

@@ -149,7 +149,9 @@ export default {
       if (this.$refs.form.validate()) {
         await axios
           .post(
-            "http://localhost:3000/lists/" + this.$route.params.id + "/songs",
+            "https://reto-back.herokuapp.com/lists/" +
+              this.$route.params.id +
+              "/songs",
             {
               name: this.title,
               artist: this.author,
@@ -172,7 +174,9 @@ export default {
       this.dialog = false;
     },
     async deleteSong() {
-      await axios.delete("http://localhost:3000/songs/" + this.selectedSong.id);
+      await axios.delete(
+        "https://reto-back.herokuapp.com/songs/" + this.selectedSong.id
+      );
       this.getSongs();
     },
     selectSong(song) {
@@ -186,7 +190,9 @@ export default {
     },
     async getSongs() {
       let songs = await axios.get(
-        "http://localhost:3000/lists/" + this.$route.params.id + "/songs"
+        "https://reto-back.herokuapp.com/lists/" +
+          this.$route.params.id +
+          "/songs"
       );
       this.songs = songs.data;
     }
